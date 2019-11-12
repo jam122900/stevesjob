@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>The Steve Jobs Memorial Museum</title>
+	<style>
+		body {
+			background-color: black;
+			overflow: hidden;
+		}
+
+		img {
+			width: 100px;
+			height: 100px;
+		}
+
+		/* keyframes definition for WebKit browsers */
+
+		@-webkit-keyframes travel {
+		  from { left: 0;     }
+		  to   { left: calc(100% - 100px); }
+		}
+
+		@-webkit-keyframes bounce {
+		  from, to  {
+			bottom: 0;
+			-webkit-animation-timing-function: linear;
+		  }
+		  50% {
+			bottom: calc(100% - 100px);
+			-webkit-animation-timing-function: linear;
+		  }
+		}
+
+		/* keyframes definition for other browsers */
+
+		@keyframes travel {
+		  from { left: 0;     }
+		  to   { left: calc(100% - 100px); }
+		}
+
+		@keyframes bounce {
+		  from, to  {
+			bottom: 0;
+			animation-timing-function: linear;
+		  }
+		  50% {
+			bottom: calc(100% - 100px);
+			animation-timing-function: linear;
+		  }
+		}
+
+		#stage {
+			overflow: hidden;
+		}
+
+		#traveler {
+		  position: absolute;
+		  width: max-content;
+		  height: 100%;
+
+		  -webkit-animation-name: travel;
+		  -webkit-animation-timing-function: linear;
+		  -webkit-animation-iteration-count: infinite;
+		  -webkit-animation-direction: alternate;
+		  -webkit-animation-duration: 4.8s;
+
+		  animation-name: travel;
+		  animation-timing-function: linear;
+		  animation-iteration-count: infinite;
+		  animation-direction: alternate;
+		  animation-duration: 4.8s;
+		}
+
+		#bouncer {
+		  position: absolute;
+
+		  -webkit-animation-name: bounce;
+		  -webkit-animation-iteration-count: infinite;
+		  -webkit-animation-duration: 4.2s;
+
+		  animation-name: bounce;
+		  animation-iteration-count: infinite;
+		  animation-duration: 4.2s;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="stage">
+		<div id="traveler">
+			<div id="bouncer">
+				<img src="bounce.png" onclick="playSound()">
+			</div>
+		</div>
+	</div>
+	<script src="index.js">
+		function playSound() {
+			console.log("playing");
+			var paths = ["sound1.mp3, sound2.mp3"];
+			var snd = new Audio(path[Math.floor(Math.random() * paths.length)]);
+			snd.play();
+		}
+	</script>
+</body>
+
+</html>
